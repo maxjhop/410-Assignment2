@@ -5,13 +5,14 @@ using UnityEngine;
 public class Observer : MonoBehaviour
 {
     public Transform player;
-    //public GameEnding gameEnding;
+    public GameEnding gameEnding;
     bool m_IsPlayerInRange;
     void OnTriggerEnter(Collider other)
     {
         if (other.transform == player)
         {
             m_IsPlayerInRange = true;
+            Debug.Log("SEEN");
         }
     }
 
@@ -34,7 +35,7 @@ public class Observer : MonoBehaviour
             {
                 if (raycastHit.collider.transform == player)
                 {
-
+                    gameEnding.CaughtPlayer();
                 }
             }
         }
