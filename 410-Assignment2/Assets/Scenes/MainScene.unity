@@ -1051,6 +1051,21 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 3475137301192724159, guid: 549c69af39b84624b8a053537c407def,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3475482297626929067, guid: 549c69af39b84624b8a053537c407def,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3475931552350424431, guid: 549c69af39b84624b8a053537c407def,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3495144823852582769, guid: 549c69af39b84624b8a053537c407def,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3000,6 +3015,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898806469641934574, guid: 549c69af39b84624b8a053537c407def,
+        type: 3}
+      propertyPath: lightincrease
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898806469641934574, guid: 549c69af39b84624b8a053537c407def,
+        type: 3}
+      propertyPath: lightintestity
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898806469641934574, guid: 549c69af39b84624b8a053537c407def,
+        type: 3}
+      propertyPath: lightIntensityMax
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6898806469641934574, guid: 549c69af39b84624b8a053537c407def,
+        type: 3}
+      propertyPath: lightIntensityMin
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6913876408049817233, guid: 549c69af39b84624b8a053537c407def,
         type: 3}
