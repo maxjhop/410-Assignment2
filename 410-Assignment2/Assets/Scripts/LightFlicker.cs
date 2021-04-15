@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 public class LightFlicker : MonoBehaviour
 {
@@ -17,10 +15,16 @@ public class LightFlicker : MonoBehaviour
     public Renderer flickeringRenderer;
     public FlickerMode flickerMode;
     public float lightIntensityMin = 1.25f;
-    public float lightIntensityMax = 2.25f;
-    public float flickerDuration = 0.075f;
+    public float lightIntensityMax = 8.0f;
+   
+   // public float flickerDuration = 0.075f;
     public AnimationCurve intensityCurve;
+    public bool up = true;
+    public float testnum = 0;
 
+    public float lightincrease = 0.5f;
+    public float lightintestity = 10f;
+  
     Material m_FlickeringMaterial;
     Color m_EmissionColor;
     float m_Timer;
@@ -41,6 +45,40 @@ public class LightFlicker : MonoBehaviour
 
     void Update()
     {
+        //Added linear interpolation for the light intesity to go back and forth.  
+
+
+        if (lightintestity > (lightIntensityMax - 0.5f))
+        {
+            up = false;
+        }
+        if (lightintestity < (lightIntensityMin + 0.5f)) 
+        {
+            up = true;
+        }
+
+        if(up == true)
+        {
+            //LightintDirection = lightIntensityMin;
+            lightintestity = Mathf.Lerp(lightintestity, lightIntensityMax, lightincrease * Time.deltaTime);
+            m_FlickeringMaterial.SetColor(k_EmissionColorID, m_EmissionColor * lightintestity); 
+        }
+        else
+        {
+           // LightintDirection = lightIntensityMax;
+
+            lightintestity = Mathf.Lerp(lightintestity, lightIntensityMin, lightincrease * Time.deltaTime);
+            m_FlickeringMaterial.SetColor(k_EmissionColorID, m_EmissionColor * lightintestity);
+            testnum += 1;
+        }
+
+
+        //lightintestity = Mathf.Lerp(lightintestity, LightintDirection, lightincrease * Time.deltaTime);
+        //m_FlickeringMaterial.SetColor(k_EmissionColorID, m_EmissionColor * lightintestity);
+           
+        
+        
+        /*
         m_Timer += Time.deltaTime;
 
         if (flickerMode == FlickerMode.Random)
@@ -57,8 +95,12 @@ public class LightFlicker : MonoBehaviour
             
         flickeringLight.intensity = m_FlickerLightIntensity;
         m_FlickeringMaterial.SetColor (k_EmissionColorID, m_EmissionColor * m_FlickerLightIntensity * k_LightIntensityToEmission);
-    }
+        */
 
+        
+        
+    }
+    /*
     void ChangeRandomFlickerLightIntensity ()
     {
         m_FlickerLightIntensity = Random.Range(lightIntensityMin, lightIntensityMax);
@@ -73,66 +115,6 @@ public class LightFlicker : MonoBehaviour
         if (m_Timer >= intensityCurve[intensityCurve.length - 1].time)
             m_Timer = intensityCurve[0].time;
     }
+    */
 }
 
-#if UNITY_EDITOR
-[CustomEditor(typeof(LightFlicker))]
-public class LightFlickerEditor : Editor
-{
-    SerializedProperty m_ScriptProp;
-    SerializedProperty m_FlickeringLightProp;
-    SerializedProperty m_FlickeringRendererProp;
-    SerializedProperty m_FlickerModeProp;
-    SerializedProperty m_LightIntensityMinProp;
-    SerializedProperty m_LightIntensityMaxProp;
-    SerializedProperty m_FlickerDurationProp;
-    SerializedProperty m_IntensityCurveProp;
-
-    void OnEnable ()
-    {
-        m_ScriptProp = serializedObject.FindProperty ("m_Script");
-        m_FlickeringLightProp = serializedObject.FindProperty ("flickeringLight");
-        m_FlickeringRendererProp = serializedObject.FindProperty ("flickeringRenderer");
-        m_FlickerModeProp = serializedObject.FindProperty ("flickerMode");
-        m_LightIntensityMinProp = serializedObject.FindProperty ("lightIntensityMin");
-        m_LightIntensityMaxProp = serializedObject.FindProperty ("lightIntensityMax");
-        m_FlickerDurationProp = serializedObject.FindProperty ("flickerDuration");
-        m_IntensityCurveProp = serializedObject.FindProperty ("intensityCurve");
-    }
-
-    public override void OnInspectorGUI ()
-    {
-        serializedObject.Update ();
-
-        GUI.enabled = false;
-        EditorGUILayout.PropertyField (m_ScriptProp);
-        GUI.enabled = true;
-        
-        EditorGUILayout.PropertyField (m_FlickeringLightProp);
-        EditorGUILayout.PropertyField (m_FlickeringRendererProp);
-        EditorGUILayout.PropertyField (m_FlickerModeProp);
-
-        if (m_FlickerModeProp.enumValueIndex == 0)
-        {
-            EditorGUILayout.PropertyField (m_LightIntensityMinProp);
-            EditorGUILayout.PropertyField (m_LightIntensityMaxProp);
-            EditorGUILayout.PropertyField (m_FlickerDurationProp);
-
-        }
-        else if (m_FlickerModeProp.enumValueIndex == 1)
-        {
-            EditorGUILayout.PropertyField (m_IntensityCurveProp);
-        }
-
-        serializedObject.ApplyModifiedProperties ();
-    }
-
-    /*public Light flickeringLight;
-    public Renderer flickeringRenderer;
-    public FlickerMode flickerMode;
-    public float lightIntensityMin = 1.25f;
-    public float lightIntensityMax = 2.25f;
-    public float flickerDuration = 0.075f;
-    public AnimationCurve intensityCurve;*/
-}
-#endif
