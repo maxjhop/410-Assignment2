@@ -5281,6 +5281,11 @@ PrefabInstance:
       objectReference: {fileID: 1365356349}
     - target: {fileID: 2359090449564061596, guid: 41d006767e6a93d4c82bbf0f0b3f1be3,
         type: 3}
+      propertyPath: enemy_fov
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 2359090449564061596, guid: 41d006767e6a93d4c82bbf0f0b3f1be3,
+        type: 3}
       propertyPath: gameEnding
       value: 
       objectReference: {fileID: 1153182456}
@@ -5302,7 +5307,7 @@ PrefabInstance:
     - target: {fileID: 2102410614515820445, guid: 08054140c9f437141a101264846c75a9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7152239864088933846, guid: 08054140c9f437141a101264846c75a9,
         type: 3}
@@ -5374,6 +5379,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1365356349}
+    - target: {fileID: 7221357436170832935, guid: 08054140c9f437141a101264846c75a9,
+        type: 3}
+      propertyPath: enemy_fov
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 7221357436170832935, guid: 08054140c9f437141a101264846c75a9,
         type: 3}
       propertyPath: gameEnding
