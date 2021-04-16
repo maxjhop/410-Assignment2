@@ -10,4 +10,6 @@
 - Add functionality utilizing dot product (River Veek)
     - All enemies in the game have a FOV (default to 120 degrees). This is done by calculating the angle between the vector of the enemy looking forward and the vector of the player location in regards to the enemy.
 - Add functionality utilizing linear interpolation (Colton Trebbien)
+    - Instead of flickering, all lights in the game now fade from dark to light.
 - Add particle effects (Max Hopkins)
+    - Ghosts now have a trail of particles that follow them as they move.
