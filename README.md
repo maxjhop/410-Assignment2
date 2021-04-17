@@ -7,6 +7,14 @@
 
 ## Goals:
 - Implement the John Lemon's Haunted Jaunt Unity tutorial (all members)
+    - Setting up 3D Beginner (Max Hopkins)
+    - The Player Character Part 1/2 (Colton Trebbien)
+    - The Environment (River Veek)
+    - The Camera (River Veek)
+    - Ending the Game (Max Hopkins)
+    - Enemies Part 1/2 (Max Hopkins)
+    - Audio (Max Hopkins)
+    - Build, Run, Distribute (Max Hopkins)
 - Add functionality utilizing dot product (River Veek)
     - All enemies in the game have a FOV (default to 120 degrees). This is done by calculating the angle between the vector of the enemy looking forward and the vector of the player location in regards to the enemy.
 - Add functionality utilizing linear interpolation (Colton Trebbien)
